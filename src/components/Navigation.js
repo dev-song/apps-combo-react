@@ -6,9 +6,9 @@ function Navigation({ apps }) {
     <nav className="Navigation">
       <ul>
         {
-          apps.map((app, index) => (
+          apps.map(({ name }, index) => (
             <li key={index}>
-              <Link to={`/${app}`}>{app}</Link>
+              <Link to={`/${name}`}>{name}</Link>
             </li>
           ))
         }
