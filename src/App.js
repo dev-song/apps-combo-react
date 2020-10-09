@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Switch, useParams } from 'react-router-dom';
 
 import Navigation from './components/Navigation';
 import Todo from './components/Todo';
@@ -26,8 +27,26 @@ function App() {
   return (
     <div className="App">
       <Navigation apps={apps} />
+      <main>
+        <Route path='/:appName'>
+          <Title />
+        </Route>
+
+        <Switch>
+          {apps.map(({ name, component }, index) => (
+            <Route path={`/${name}`} key={index}>
+              {component}
+            </Route>
+          ))}
+        </Switch>
+      </main>
     </div>
   );
+}
+
+function Title() {
+  let { appName } = useParams();
+  return <h1 className='app__title'>{appName}</h1>;
 }
 
 export default App;
