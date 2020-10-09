@@ -1,9 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Navigation() {
+function Navigation({ apps }) {
   return (
-    <div className="Navigation">
-    </div>
+    <nav className="Navigation">
+      <ul>
+        {
+          apps.map((app, index) => (
+            <li key={index}>
+              <Link to={`/${app}`}>{app}</Link>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
   );
 }
 
