@@ -1,5 +1,19 @@
 import React from 'react';
 
+const CATEGORIES = [
+  'name',
+  'age',
+  'weight'
+];
+
+class TableItem {
+  constructor() {
+    [...arguments].forEach((arg, index) => {
+      this[CATEGORIES[index]] = arg;
+    })
+  }
+}
+
 class Grid extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +30,10 @@ class Grid extends React.Component {
     };
   }
 
+  sortData(category) {
+    this.setState({ data: [...this.data].sort((a, b) => a[category] - b[category]) })
+  }
+
   render() {
     const { data } = this.state;
 
@@ -29,9 +47,17 @@ class Grid extends React.Component {
         <table className='Grid-table'>
           <thead>
             <tr>
-              <th>name</th>
-              <th>age</th>
-              <th>weight</th>
+              {CATEGORIES.map((category, index) => (
+                <th key={index}>
+                  {category}
+                  <span
+                    role='img'
+                    aria-label='Expand'
+                  >
+                    &#128316;
+                  </span>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -46,14 +72,6 @@ class Grid extends React.Component {
         </table>
       </div>
     );
-  }
-}
-
-class TableItem {
-  constructor(name, age, weight) {
-    this.name = name;
-    this.age = age;
-    this.weight = weight;
   }
 }
 
