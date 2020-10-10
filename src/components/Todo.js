@@ -8,14 +8,36 @@ class Todo extends React.Component {
     }
   }
 
+  addTodo(e) {
+    e.preventDefault();
+
+    this.setState({
+      todo: [
+        ...this.state.todo,
+        new TodoItem(e.target.querySelector('input[type="text"]').value)
+      ]
+    });
+  }
+
   render() {
     const { todo } = this.state;
 
     return (
       <div className='Todo'>
+        <ul className='Todo-list'>
+          {todo.map(({ regTime, text }) => (
+            <li key={regTime} className='Todo-item'>
+              {text}
+            </li>
+          ))}
+        </ul>
+
         {todo.length < 5
           ?
-          <form className='add-todo__container'>
+          <form
+            className='add-todo__container'
+            onSubmit={e => this.addTodo(e)}
+          >
             <input
               type='text'
               className='add-todo__input'
