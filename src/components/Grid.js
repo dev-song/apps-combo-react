@@ -1,6 +1,14 @@
 import React from 'react';
 
 function Grid() {
+  const data = [
+    new TableItem('jack', 20, 70),
+    new TableItem('lee', 30, 88),
+    new TableItem('chuck', 17, 75),
+    new TableItem('ralph', 41, 69),
+    new TableItem('mark', 25, 80)
+  ];
+
   return (
     <div className='Grid'>
       <input
@@ -17,10 +25,25 @@ function Grid() {
           </tr>
         </thead>
         <tbody>
+          {data.map(({ name, age, weight }, index) => (
+            <tr key={index}>
+              <td>{name}</td>
+              <td>{age}</td>
+              <td>{weight}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
   );
+}
+
+class TableItem {
+  constructor(name, age, weight) {
+    this.name = name;
+    this.age = age;
+    this.weight = weight;
+  }
 }
 
 export default Grid;
