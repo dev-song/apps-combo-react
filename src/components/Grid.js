@@ -1,15 +1,23 @@
 import React from 'react';
 
+class TableCategory {
+  constructor(category) {
+    this.category = category;
+    this.sortOrder = null;
+  }
+}
+
 const CATEGORIES = [
-  'name',
-  'age',
-  'weight'
+  new TableCategory('name'),
+  new TableCategory('age'),
+  new TableCategory('weight')
 ];
 
 class TableItem {
   constructor() {
     [...arguments].forEach((arg, index) => {
-      this[CATEGORIES[index]] = arg;
+      const { category } = CATEGORIES[index];
+      this[category] = arg;
     })
   }
 }
@@ -53,7 +61,7 @@ class Grid extends React.Component {
         <table className='Grid-table'>
           <thead>
             <tr>
-              {CATEGORIES.map((category, index) => (
+              {CATEGORIES.map(({ category }, index) => (
                 <th key={index}>
                   {category}
                   <span
