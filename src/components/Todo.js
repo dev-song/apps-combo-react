@@ -19,6 +19,12 @@ class Todo extends React.Component {
     });
   }
 
+  deleteTodo(regTime) {
+    this.setState({
+      todo: this.state.todo.filter(item => item.regTime !== +regTime)
+    });
+  }
+
   render() {
     const { todo } = this.state;
 
@@ -28,6 +34,12 @@ class Todo extends React.Component {
           {todo.map(({ regTime, text }) => (
             <li key={regTime} className='Todo-item'>
               {text}
+              <button
+                className='Todo-item__delete-button'
+                onClick={() => { this.deleteTodo(regTime) }}
+              >
+                -
+              </button>
             </li>
           ))}
         </ul>
