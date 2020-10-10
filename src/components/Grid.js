@@ -31,7 +31,13 @@ class Grid extends React.Component {
   }
 
   sortData(category) {
-    this.setState({ data: [...this.data].sort((a, b) => a[category] - b[category]) })
+    this.setState({
+      data: [...this.data].sort((a, b) => {
+        if (a[category] < b[category]) return - 1;
+        if (a[category] > b[category]) return 1;
+        return 0;
+      })
+    })
   }
 
   render() {
@@ -53,8 +59,9 @@ class Grid extends React.Component {
                   <span
                     role='img'
                     aria-label='Expand'
+                    onClick={() => this.sortData(category)}
                   >
-                    &#128316;
+                    &#128317;
                   </span>
                 </th>
               ))}
