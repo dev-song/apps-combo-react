@@ -11,7 +11,8 @@ const initialState = {
   number: 0,
   lastCalc: null,
   isMax: false,
-  isMin: true
+  isMin: true,
+  lastCalcTime: null
 };
 
 // Reducer
@@ -23,18 +24,20 @@ export default function counter(state = initialState, action) {
     case INCREMENT:
       return {
         ...state,
-        number: state.isMax ? state.number : state.number + 1,
+        number: state.isMax ? MAX : state.number + 1,
         lastCalc: 'increment',
         isMax: state.number >= MAX - 1 ? true : false,
-        isMin: false
+        isMin: false,
+        lastCalcTime: new Date().getTime()
       };
     case DECREMENT:
       return {
         ...state,
-        number: state.isMin ? state.number : state.number - 1,
+        number: state.isMin ? MIN : state.number - 1,
         lastCalc: 'decrement',
         isMax: false,
-        isMin: state.number <= MIN + 1 ? true : false
+        isMin: state.number <= MIN + 1 ? true : false,
+        lastCalcTime: new Date().getTime()
       };
     default:
       return state;
