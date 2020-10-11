@@ -43,8 +43,10 @@ class Grid extends React.Component {
   }
 
   sortData(category, lastSortOrder) {
+    const { categories, data } = this.state;
+
     this.setState({
-      categories: this.state.categories.map(item => {
+      categories: categories.map(item => {
         if (item.category === category) {
           return {
             category: category,
@@ -53,12 +55,23 @@ class Grid extends React.Component {
         }
         return item;
       }),
-      data: [...this.data].sort((a, b) => {
+      data: [...data].sort((a, b) => {
         if (a[category] < b[category]) return lastSortOrder === 'desc' ? -1 : 1;
         if (a[category] > b[category]) return lastSortOrder === 'desc' ? 1 : -1;
         return 0;
       })
     });
+  }
+
+  filterData(keyword) {
+    this.setState({
+      data: [...this.data].filter(item => {
+        for (const property in item) {
+          if (`${item[property]}`.includes(keyword)) return true;
+        }
+        return false;
+      })
+    })
   }
 
   render() {
@@ -70,6 +83,7 @@ class Grid extends React.Component {
           className='Grid-filter'
           type='text'
           placeholder='Please enter keywords'
+          onKeyUp={e => { this.filterData(e.target.value) }}
         />
         <table className='Grid-table'>
           <thead>
