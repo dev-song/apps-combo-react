@@ -13,11 +13,13 @@ class CounterContainer extends React.Component {
   };
 
   render() {
-    const { number, lastCalc } = this.props;
+    const { number, lastCalc, isMax, isMin } = this.props;
     return (
       <Counter
         number={number}
         lastCalc={lastCalc}
+        isMax={isMax}
+        isMin={isMin}
         onIncrement={this.handleIncrement}
         onDecrement={this.handleDecrement}
       />
@@ -27,7 +29,9 @@ class CounterContainer extends React.Component {
 
 const mapStateToProps = ({ counter }) => ({
   number: counter.number,
-  lastCalc: counter.lastCalc
+  lastCalc: counter.lastCalc,
+  isMax: counter.isMax,
+  isMin: counter.isMin
 });
 
 const mapDispatchToProps = dispatch => ({

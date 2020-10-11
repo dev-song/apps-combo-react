@@ -1,22 +1,31 @@
 import React from 'react';
 
-function Counter({ number, lastCalc, onIncrement, onDecrement }) {
+function Counter({ number, lastCalc, isMax, isMin, onIncrement, onDecrement }) {
+  const incrementBtn = !isMax
+    ?
+    <button
+      className="Counter__increment-button"
+      onClick={onIncrement}
+    >
+      +
+    </button>
+    : null;
+  const decrementBtn = !isMin
+    ?
+    <button
+      className="Counter__decrement-button"
+      onClick={onDecrement}
+    >
+      -
+        </button>
+    : null;
+
   return (
     <div className="Counter">
       <div className="Counter__container">
-        <button
-          className="Counter__increment-button"
-          onClick={onIncrement}
-        >
-          +
-          </button>
+        {incrementBtn}
         <h2 className="Counter__number">{number}</h2>
-        <button
-          className="Counter__decrement-button"
-          onClick={onDecrement}
-        >
-          -
-        </button>
+        {decrementBtn}
       </div>
       <p className="Counter__explanation">
         Count title:
