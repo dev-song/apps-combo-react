@@ -5,8 +5,9 @@ import Navigation from './components/Navigation';
 import Todo from './components/Todo';
 import Grid from './components/Grid';
 import Modal from './components/Modal';
-import Counter from './components/Counter';
 import Async from './components/Async';
+
+import CounterContainer from './containers/CounterContainer';
 
 class AppInfo {
   constructor(name, component) {
@@ -20,7 +21,7 @@ function App() {
     new AppInfo('todo', <Todo />),
     new AppInfo('grid', <Grid />),
     new AppInfo('modals', <Modal />),
-    new AppInfo('counter', <Counter />),
+    new AppInfo('counter', <CounterContainer />),
     new AppInfo('async', <Async />)
   ];
 
