@@ -5,7 +5,7 @@ class Todo extends React.Component {
     super(props);
     this.state = {
       todo: []
-    }
+    };
   }
 
   addTodo(e) {
@@ -67,7 +67,7 @@ class Todo extends React.Component {
 class TodoItem {
   constructor(text) {
     this.regTime = new Date().getTime();
-    this.text = text
+    this.text = text;
   }
 }
 
