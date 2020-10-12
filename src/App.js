@@ -9,6 +9,8 @@ import Async from './components/Async';
 
 import CounterContainer from './containers/CounterContainer';
 
+import './App.css';
+
 class AppInfo {
   constructor(name, component) {
     this.name = name;
@@ -28,7 +30,7 @@ function App() {
   return (
     <div className="App">
       <Navigation apps={apps} />
-      <main>
+      <main className="App__main">
         <Route path='/:appName'>
           <Title />
         </Route>
@@ -47,7 +49,7 @@ function App() {
 
 function Title() {
   let { appName } = useParams();
-  return <h1 className='app__title'>{appName}</h1>;
+  return <h1 className='App__main--title'>{appName}</h1>;
 }
 
 export default App;
