@@ -12,6 +12,7 @@ class Async extends React.Component {
     super(props);
     this.state = {
       isLoading: true,
+      selectedCity: null,
       weather: null
     }
   }
@@ -22,10 +23,11 @@ class Async extends React.Component {
 
     try {
       let response = await fetch(weatherApi);
-      let weather = await response.json();
+      let weatherData = await response.json();
       this.setState({
         isLoading: false,
-        weather
+        selectedCity: city,
+        weatherData
       });
     } catch (err) {
       console.error(err);
@@ -37,7 +39,11 @@ class Async extends React.Component {
   }
 
   render() {
-    const { isLoading, weather } = this.state;
+    const {
+      isLoading,
+      selectedCity,
+      weatherData
+    } = this.state;
 
     return (
       <div className="Async">
@@ -45,6 +51,7 @@ class Async extends React.Component {
           {CITIES.map((city, index) => (
             <button
               key={index}
+              className={selectedCity === city ? 'selected' : null}
               onClick={() => this.getWeather(city)}
             >
               {city}
@@ -54,15 +61,28 @@ class Async extends React.Component {
         {!isLoading
           ?
           <div className="Async__weather-data">
-            <p>City: {weather.city}</p>
-            <p>Weather: {weather.current.weather}</p>
-            <p>Date: {weather.current.date}</p>
-            <figure>
-              <img src={weather.image_url} alt={`The city of ${weather.city}`} />
+            <p className="weather-data__city--label">
+              City:
+              <span className="weather-data__city">{weatherData.city}</span>
+            </p>
+            <p className="weather-data__weather--label">
+              Weather:
+              <span className="weather-data__weather">{weatherData.current.weather}</span>
+            </p>
+            <p className="weather-data__date--label">
+              Date:
+              <span className="weather-data__date">{weatherData.current.date.split('T')[0]}</span>
+            </p>
+            <figure className="weather-data__city-img--container">
+              <img
+                src={weatherData.image_url}
+                className="weather-data__city-img"
+                alt={`The city of ${weatherData.city}`}
+              />
             </figure>
           </div>
           :
-          <p>Loading...</p>
+          <p className="Async__loading-message">Loading...</p>
         }
       </div>
     );
