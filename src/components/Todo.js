@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Todo.css';
+
 class Todo extends React.Component {
   constructor(props) {
     super(props);
@@ -30,7 +32,7 @@ class Todo extends React.Component {
 
     return (
       <div className='Todo'>
-        <ul className='Todo-list'>
+        <ul className='Todo__item-list'>
           {todo.map(({ regTime, text }) => (
             <li key={regTime} className='Todo-item'>
               {text}
@@ -47,17 +49,17 @@ class Todo extends React.Component {
         {todo.length < 5
           ?
           <form
-            className='add-todo__container'
+            className='Todo__input-container'
             onSubmit={e => this.addTodo(e)}
           >
             <input
               type='text'
-              className='add-todo__input'
+              className='Todo__input'
               placeholder='What needs to be done?' />
-            <button className='add-todo__button'>+</button>
+            <button className='Todo__input--add-button'>+</button>
           </form>
           :
-          <p className='message-full-list'>The list is full.</p>
+          <p className='Todo__list-full-message'>The list is full.</p>
         }
       </div>
     );

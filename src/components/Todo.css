@@ -1,0 +1,80 @@
+:root {
+  --delete-button-width: 1.5rem;
+  --button-font-color: #ffffff;
+  --todo-item-height: 1.5rem;
+  --todo-input-height: 2rem;
+}
+
+.Todo {
+  box-sizing: border-box;
+  width: 100%;
+  margin: auto;
+  padding: 1rem;
+}
+
+.Todo__item-list {
+  margin: 0 0 1.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  border: 1px solid var(--app-color);
+  border-radius: 0.25rem;
+}
+
+.Todo-item {
+  position: relative;
+
+  height: var(--todo-item-height);
+  margin-bottom: 1rem;
+  padding-right: var(--delete-button-width);
+
+  line-height: var(--todo-item-height);
+}
+
+.Todo-item:last-of-type {
+  margin-bottom: 0;
+}
+
+.Todo-item__delete-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: var(--delete-button-width);
+  height: var(--todo-item-height);
+  padding: 0;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+
+  background: var(--app-color);
+  color: var(--button-font-color);
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.Todo__input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+}
+
+.Todo__input {
+  box-sizing: border-box;
+
+  width: 87%;
+  height: var(--todo-input-height);
+  padding: 0 1rem;
+}
+
+.Todo__input--add-button {
+  width: 10%;
+  height: var(--todo-input-height);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+
+  background: var(--app-color);
+  color: var(--button-font-color);
+  font-size: 1.5rem;
+}
