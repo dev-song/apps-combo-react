@@ -1,7 +1,3 @@
-:root {
-  --emphasize-color: #56d5fa;
-}
-
 .Navigation__container {
   display: flex;
   justify-content: flex-start;
@@ -9,7 +5,7 @@
 
   margin: 0;
   padding: 0;
-  border-bottom: 2px solid var(--emphasize-color);
+  border-bottom: 2px solid var(--app-color);
 }
 
 .Navigation__link--container {
@@ -34,5 +30,5 @@
 }
 
 .Navigation__link:hover {
-  color: var(--emphasize-color);
+  color: var(--app-color);
 }

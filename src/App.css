@@ -1,3 +1,7 @@
+:root {
+  --app-color: #56d5fa;
+}
+
 .App {
   margin: 0;
   padding: 0;
