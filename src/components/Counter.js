@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Counter.css';
+
 function Counter({ number, lastCalc, isMax, isMin, onIncrement, onDecrement }) {
   const incrementBtn = !isMax
     ?
@@ -9,7 +11,7 @@ function Counter({ number, lastCalc, isMax, isMin, onIncrement, onDecrement }) {
     >
       +
     </button>
-    : null;
+    : <div className="Counter__button--hidden" />;
   const decrementBtn = !isMin
     ?
     <button
@@ -18,7 +20,7 @@ function Counter({ number, lastCalc, isMax, isMin, onIncrement, onDecrement }) {
     >
       -
         </button>
-    : null;
+    : <div className="Counter__button--hidden" />;
 
   return (
     <div className="Counter">
@@ -27,9 +29,9 @@ function Counter({ number, lastCalc, isMax, isMin, onIncrement, onDecrement }) {
         <h2 className="Counter__number">{number}</h2>
         {decrementBtn}
       </div>
-      <p className="Counter__explanation">
+      <p className="Counter__description">
         Count title:
-        <span className="Counter__status"> {lastCalc}</span>
+        <span className="Counter__last-calculation"> {lastCalc}</span>
       </p>
     </div>
   );
