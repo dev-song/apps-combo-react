@@ -3,6 +3,7 @@
   --button-font-color: #ffffff;
   --todo-item-height: 1.5rem;
   --todo-input-height: 2rem;
+  --button-outline-style: 1px auto #000000;
 }
 
 .Todo {
@@ -77,4 +78,9 @@
   background: var(--app-color);
   color: var(--button-font-color);
   font-size: 1.5rem;
+}
+
+.Todo__input--add-button:focus,
+.Todo-item__delete-button:focus {
+  outline: var(--button-outline-style);
 }
