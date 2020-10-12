@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Grid.css';
+
 const CATEGORIES = [
   'name',
   'age',
@@ -80,37 +82,44 @@ class Grid extends React.Component {
     return (
       <div className='Grid' >
         <input
-          className='Grid-filter'
+          className='Grid__keyword-input'
           type='text'
           placeholder='Please enter keywords'
           onKeyUp={e => { this.filterData(e.target.value) }}
         />
-        <table className='Grid-table'>
-          <thead>
-            <tr>
+        <table className='Grid__data-table'>
+          <thead className='data-table__table-head'>
+            <tr className='table-head__row'>
               {categories.map(({ category, lastSortOrder }, index) => (
-                <th key={index}>
+                <th
+                  key={index}
+                  className='table-head__column'
+                >
                   {category}
                   <span
                     role='img'
+                    className='table-head__asc-desc-button'
                     aria-label='Expand'
                     onClick={() => this.sortData(category, lastSortOrder)}
                   >
                     {lastSortOrder === 'desc'
-                      ? String.fromCodePoint(0x1F53D)
-                      : String.fromCodePoint(0x1F53C)
+                      ? '▲'
+                      : '▼'
                     }
                   </span>
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody>
+          <tbody className='data-table__table-body'>
             {data.map(({ name, age, weight }, index) => (
-              <tr key={index}>
-                <td>{name}</td>
-                <td>{age}</td>
-                <td>{weight}</td>
+              <tr
+                key={index}
+                className='table-body__row'
+              >
+                <td className='table-body__column column-name'>{name}</td>
+                <td className='table-body__column'>{age}</td>
+                <td className='table-body__column'>{weight}</td>
               </tr>
             ))}
           </tbody>

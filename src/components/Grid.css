@@ -1,0 +1,62 @@
+:root {
+  --table-head-color: #29384b;
+  --table-body-color: #56d5fa;
+  --table-text-color: #ffffff;
+  --table-cell-border-color: #ffffff;
+}
+
+.Grid {
+  box-sizing: border-box;
+  width: 100%;
+  margin: auto;
+  padding: 1rem;
+}
+
+.Grid__keyword-input {
+  margin-bottom: 1rem;
+  padding: 0.3rem 0.5rem;
+}
+
+.Grid__data-table {
+  width: 100%;
+  border-spacing: 0;
+
+  color: var(--table-text-color);
+  text-align: center;
+}
+
+.data-table__table-head {
+  background: var(--table-head-color);
+}
+
+.data-table__table-body {
+  background: var(--table-body-color);
+}
+
+.table-head__row,
+.table-body__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.table-head__column,
+.table-body__column {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--table-cell-border-color);
+  opacity: 0.8;
+}
+
+.table-head__asc-desc-button {
+  margin-left: 0.5rem;
+  cursor: pointer;
+
+  font-size: 0.5rem;
+}
+
+.table-body__column {
+  font-weight: 500;
+}
+
+.column-name {
+  text-transform: capitalize;
+}
