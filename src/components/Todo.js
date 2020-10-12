@@ -12,13 +12,22 @@ class Todo extends React.Component {
 
   addTodo(e) {
     e.preventDefault();
+    const input = e.target.querySelector('input[type="text"]');
+    if (!this.validate(input.value)) return;
 
     this.setState({
       todo: [
         ...this.state.todo,
-        new TodoItem(e.target.querySelector('input[type="text"]').value)
+        new TodoItem(input.value)
       ]
     });
+
+    input.value = '';
+    input.focus();
+  }
+
+  validate(value) {
+    return value.length > 0 && value.length <= 32;
   }
 
   deleteTodo(regTime) {
@@ -32,19 +41,23 @@ class Todo extends React.Component {
 
     return (
       <div className='Todo'>
-        <ul className='Todo__item-list'>
-          {todo.map(({ regTime, text }) => (
-            <li key={regTime} className='Todo-item'>
-              {text}
-              <button
-                className='Todo-item__delete-button'
-                onClick={() => { this.deleteTodo(regTime) }}
-              >
-                -
+        {todo.length < 1
+          ? null
+          :
+          <ul className='Todo__item-list'>
+            {todo.map(({ regTime, text }) => (
+              <li key={regTime} className='Todo-item'>
+                {text}
+                <button
+                  className='Todo-item__delete-button'
+                  onClick={() => { this.deleteTodo(regTime) }}
+                >
+                  -
               </button>
-            </li>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+        }
 
         {todo.length < 5
           ?
@@ -55,6 +68,8 @@ class Todo extends React.Component {
             <input
               type='text'
               className='Todo__input'
+              minLength='1'
+              maxLength='32'
               placeholder='What needs to be done?' />
             <button className='Todo__input--add-button'>+</button>
           </form>
