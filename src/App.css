@@ -13,3 +13,7 @@
   text-align: center;
   text-transform: capitalize;
 }
+
+button:focus {
+  outline: none;
+}
