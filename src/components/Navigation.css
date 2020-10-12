@@ -1,0 +1,38 @@
+:root {
+  --emphasize-color: #56d5fa;
+}
+
+.Navigation__container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
+  border-bottom: 2px solid var(--emphasize-color);
+}
+
+.Navigation__link--container {
+  all: unset;
+
+  padding: 1rem;
+}
+
+.Navigation__link--container:first-of-type {
+  margin-left: 1rem;
+}
+
+.Navigation__link {
+  all: unset;
+  transition: all 0.3s linear;
+  cursor: pointer;
+
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.Navigation__link:hover {
+  color: var(--emphasize-color);
+}
