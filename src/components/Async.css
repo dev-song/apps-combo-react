@@ -1,0 +1,70 @@
+:root {
+  --button-background-color: var(--app-color);
+  --button-text-color: #ffffff;
+  --weather-data-text-color: var(--app-color);
+  --emphasize-background-color: #29384b;
+  --emphasize-text-color: var(--app-color);
+}
+
+.Async {
+  box-sizing: border-box;
+  width: 100%;
+  margin: auto;
+  padding: 1rem;
+}
+
+.Async__cities--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 4rem;
+}
+
+.cities__select-button {
+  width: 10rem;
+  margin: 0 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+
+  background: var(--app-color);
+  color: var(--button-font-color);
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.cities__select-button.selected {
+  background: var(--emphasize-background-color);
+}
+
+.Async__weather-data > p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.weather-data__city,
+.weather-data__weather,
+.weather-data__date {
+  margin-left: 0.5rem;
+
+  color: var(--weather-data-text-color);
+}
+
+.weather-data__city-img--container {
+  height: 24rem;
+
+  text-align: center;
+}
+
+.weather-data__city-img {
+  height: 100%;
+  border-radius: 0.5rem;
+}
+
+.Async__loading-message {
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+}

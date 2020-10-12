@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Async.css';
+
 const CITIES = [
   'Seoul',
   'Tokyo',
@@ -47,11 +49,11 @@ class Async extends React.Component {
 
     return (
       <div className="Async">
-        <div className="Async__cities-button">
+        <div className="Async__cities--container">
           {CITIES.map((city, index) => (
             <button
               key={index}
-              className={selectedCity === city ? 'selected' : null}
+              className={`cities__select-button${selectedCity === city ? ' selected' : ''}`}
               onClick={() => this.getWeather(city)}
             >
               {city}
