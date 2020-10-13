@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, useParams } from 'react-router-dom';
+import { Redirect, Route, Switch, useParams } from 'react-router-dom';
 
 import Navigation from './components/Navigation';
 import Todo from './components/Todo';
@@ -33,6 +33,10 @@ function App() {
       <main className="App__main">
         <Route path='/:appName'>
           <Title />
+        </Route>
+
+        <Route exact path='/'>
+          <Redirect to={`/${apps[0].name}`} />
         </Route>
 
         <Switch>
