@@ -45,7 +45,7 @@ class Grid extends React.Component {
           })
         });
       }
-    })
+    });
   }
 
   filterData(keyword) {
@@ -64,7 +64,7 @@ class Grid extends React.Component {
           visible: false
         };
       })
-    })
+    });
   }
 
   handleSort(category) {
@@ -105,10 +105,10 @@ class Grid extends React.Component {
         <table className='Grid__data-table'>
           <thead className='data-table__table-head'>
             <tr className='table-head__row'>
-              {categories.map(({ category, sortOrder }, index) => (
+              {categories.map(({ category, sortOrder, selected }, index) => (
                 <th
                   key={index}
-                  className='table-head__column'
+                  className={`table-head__column${selected ? ' selected' : ''}`}
                 >
                   {category}
                   <span
@@ -127,14 +127,23 @@ class Grid extends React.Component {
             </tr>
           </thead>
           <tbody className='data-table__table-body'>
-            {data.map(({ name, age, weight, visible }, index) => (
+            {data.map((item, index) => (
               <tr
                 key={index}
-                className={`table-body__row${visible ? '' : ' hidden'}`}
+                className={
+                  `table-body__row${item.visible ? '' : ' hidden'}`
+                }
               >
-                <td className='table-body__column column-name'>{name}</td>
-                <td className='table-body__column'>{age}</td>
-                <td className='table-body__column'>{weight}</td>
+                {categories.map(({ category, selected }, index) => (
+                  <td
+                    key={index}
+                    className={
+                      `table-body__column ${category}-column${selected ? ' selected' : ''}`
+                    }
+                  >
+                    {item[category]}
+                  </td>
+                ))}
               </tr>
             ))}
           </tbody>

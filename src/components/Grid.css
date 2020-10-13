@@ -47,7 +47,20 @@
 .table-body__column {
   padding: 0.5rem 1rem;
   border: 1px solid var(--table-cell-border-color);
-  opacity: 0.8;
+  opacity: 0.7;
+}
+
+.table-body__column {
+  font-weight: 500;
+}
+
+.table-head__column.selected,
+.table-body__column.selected {
+  opacity: 1;
+}
+
+.name-column {
+  text-transform: capitalize;
 }
 
 .table-head__asc-desc-button {
@@ -55,12 +68,4 @@
   cursor: pointer;
 
   font-size: 0.5rem;
-}
-
-.table-body__column {
-  font-weight: 500;
-}
-
-.column-name {
-  text-transform: capitalize;
 }
