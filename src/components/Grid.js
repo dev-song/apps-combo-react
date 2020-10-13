@@ -7,73 +7,88 @@ const CATEGORIES = [
   'age',
   'weight'
 ];
-
-class TableCategory {
-  constructor(category) {
-    this.category = category;
-    this.lastSortOrder = null;
-  }
-}
-
-class TableItem {
-  constructor() {
-    [...arguments].forEach((arg, index) => {
-      const category = CATEGORIES[index];
-      this[category] = arg;
-    })
-  }
-}
+const ASCENDING = 'asc';
+const DESCENDING = 'desc';
 
 class Grid extends React.Component {
   constructor(props) {
     super(props);
-    this.categories = CATEGORIES.map(category => (
-      new TableCategory(category)
-    ));
-    this.data = [
-      new TableItem('jack', 20, 70),
-      new TableItem('lee', 30, 88),
-      new TableItem('chuck', 17, 75),
-      new TableItem('ralph', 41, 69),
-      new TableItem('mark', 25, 80)
-    ];
 
     this.state = {
-      categories: this.categories,
-      data: this.data
+      categories: CATEGORIES.map(category => (
+        new TableCategory(category)
+      )),
+      data: [
+        new TableItem('jack', 20, 70),
+        new TableItem('lee', 30, 88),
+        new TableItem('chuck', 17, 75),
+        new TableItem('ralph', 41, 69),
+        new TableItem('mark', 25, 80)
+      ]
     };
   }
 
-  sortData(category, lastSortOrder) {
+  sortData() {
     const { categories, data } = this.state;
 
-    this.setState({
-      categories: categories.map(item => {
-        if (item.category === category) {
-          return {
-            category: category,
-            lastSortOrder: lastSortOrder === 'desc' ? 'asc' : 'desc'
-          }
-        }
-        return item;
-      }),
-      data: [...data].sort((a, b) => {
-        if (a[category] < b[category]) return lastSortOrder === 'desc' ? -1 : 1;
-        if (a[category] > b[category]) return lastSortOrder === 'desc' ? 1 : -1;
-        return 0;
-      })
-    });
+    categories.forEach(({ category, sortOrder, selected }) => {
+      if (selected) {
+        this.setState({
+          data: [...data].sort((a, b) => {
+            if (a[category] < b[category]) {
+              return sortOrder === DESCENDING ? 1 : -1;
+            }
+            if (a[category] > b[category]) {
+              return sortOrder === DESCENDING ? -1 : 1;
+            }
+            return 0;
+          })
+        });
+      }
+    })
   }
 
   filterData(keyword) {
     this.setState({
-      data: [...this.data].filter(item => {
+      data: [...this.state.data].map(item => {
         for (const property in item) {
-          if (`${item[property]}`.includes(keyword)) return true;
+          if (`${item[property]}`.includes(keyword)) {
+            return {
+              ...item,
+              visible: true
+            };
+          }
         }
-        return false;
+        return {
+          ...item,
+          visible: false
+        };
       })
     })
+  }
+
+  handleSort(category) {
+    this.setState({
+      categories: this.state.categories.map(item => {
+        if (item.category === category) {
+          return {
+            category,
+            sortOrder: item.sortOrder === DESCENDING
+              ? ASCENDING
+              : DESCENDING,
+            selected: true
+          };
+        }
+        return {
+          ...item,
+          selected: false
+        };
+      })
+    });
+
+    setTimeout(() => {
+      this.sortData();
+    }, 0);
   }
 
   render() {
@@ -90,7 +105,7 @@ class Grid extends React.Component {
         <table className='Grid__data-table'>
           <thead className='data-table__table-head'>
             <tr className='table-head__row'>
-              {categories.map(({ category, lastSortOrder }, index) => (
+              {categories.map(({ category, sortOrder }, index) => (
                 <th
                   key={index}
                   className='table-head__column'
@@ -100,11 +115,11 @@ class Grid extends React.Component {
                     role='img'
                     className='table-head__asc-desc-button'
                     aria-label='Expand'
-                    onClick={() => this.sortData(category, lastSortOrder)}
+                    onClick={() => this.handleSort(category)}
                   >
-                    {lastSortOrder === 'desc'
-                      ? '▲'
-                      : '▼'
+                    {sortOrder === DESCENDING
+                      ? '▼'
+                      : '▲'
                     }
                   </span>
                 </th>
@@ -112,10 +127,10 @@ class Grid extends React.Component {
             </tr>
           </thead>
           <tbody className='data-table__table-body'>
-            {data.map(({ name, age, weight }, index) => (
+            {data.map(({ name, age, weight, visible }, index) => (
               <tr
                 key={index}
-                className='table-body__row'
+                className={`table-body__row${visible ? '' : ' hidden'}`}
               >
                 <td className='table-body__column column-name'>{name}</td>
                 <td className='table-body__column'>{age}</td>
@@ -126,6 +141,24 @@ class Grid extends React.Component {
         </table>
       </div>
     );
+  }
+}
+
+class TableCategory {
+  constructor(category) {
+    this.category = category;
+    this.sortOrder = null;
+    this.selected = false;
+  }
+}
+
+class TableItem {
+  constructor() {
+    [...arguments].forEach((arg, index) => {
+      const category = CATEGORIES[index];
+      this[category] = arg;
+      this.visible = true;
+    })
   }
 }
 

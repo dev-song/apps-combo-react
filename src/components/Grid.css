@@ -39,6 +39,10 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+.table-body__row.hidden {
+  display: none;
+}
+
 .table-head__column,
 .table-body__column {
   padding: 0.5rem 1rem;
