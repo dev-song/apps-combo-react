@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/apps-combo-react/static/css/main.3e243e38.chunk.css",
+    "main.js": "/apps-combo-react/static/js/main.9e4a1e91.chunk.js",
+    "main.js.map": "/apps-combo-react/static/js/main.9e4a1e91.chunk.js.map",
+    "runtime-main.js": "/apps-combo-react/static/js/runtime-main.aa9b45ef.js",
+    "runtime-main.js.map": "/apps-combo-react/static/js/runtime-main.aa9b45ef.js.map",
+    "static/js/2.3874b478.chunk.js": "/apps-combo-react/static/js/2.3874b478.chunk.js",
+    "static/js/2.3874b478.chunk.js.map": "/apps-combo-react/static/js/2.3874b478.chunk.js.map",
+    "index.html": "/apps-combo-react/index.html",
+    "precache-manifest.ecd9764b202e33481ca4b795659558fc.js": "/apps-combo-react/precache-manifest.ecd9764b202e33481ca4b795659558fc.js",
+    "service-worker.js": "/apps-combo-react/service-worker.js",
+    "static/css/main.3e243e38.chunk.css.map": "/apps-combo-react/static/css/main.3e243e38.chunk.css.map",
+    "static/js/2.3874b478.chunk.js.LICENSE.txt": "/apps-combo-react/static/js/2.3874b478.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aa9b45ef.js",
+    "static/js/2.3874b478.chunk.js",
+    "static/css/main.3e243e38.chunk.css",
+    "static/js/main.9e4a1e91.chunk.js"
+  ]
+}
