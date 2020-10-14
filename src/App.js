@@ -30,7 +30,10 @@ function App() {
   return (
     <div className="App">
       <Navigation apps={apps} />
-      <main className="App__main">
+      <section
+        role="main"
+        className="App__main"
+      >
         <Route path='/:appName'>
           <Title />
         </Route>
@@ -46,7 +49,7 @@ function App() {
             </Route>
           ))}
         </Switch>
-      </main>
+      </section>
     </div>
   );
 }

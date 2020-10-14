@@ -1,16 +1,36 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version,not ie <= 9
+*/
+
+:root {
+  --navigation-border-color: #56d5fa;
+  --navigation-text-color: #000000;
+  --emphasize-color: #56d5fa;
+}
+
 .Navigation__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 
   margin: 0;
   padding: 0;
-  border-bottom: 2px solid var(--app-color);
+  border-bottom: 2px solid var(--navigation-border-color);
 }
 
 .Navigation__link--container {
-  all: unset;
+  list-style: none;
 
   padding: 1rem;
 }
@@ -20,25 +40,34 @@
 }
 
 .Navigation__link {
-  all: unset;
+  text-decoration: none;
+  -webkit-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
   transition: all 0.3s linear;
   cursor: pointer;
 
-  color: black;
+  color: var(--navigation-text-color);
   font-size: 1.2rem;
   font-weight: 600;
   text-transform: capitalize;
 }
 
 .Navigation__link:hover {
-  color: var(--app-color);
+  color: var(--emphasize-color);
 }
 
 @media (max-width: 768px) {
   .Navigation__container {
+    display: -ms-grid;
     display: grid;
     justify-items: center;
-    grid-template-columns: repeat(3, 1fr);
+    -ms-grid-rows: 1fr 0.5rem 1fr;
+    -ms-grid-columns: 1fr 0.5rem 1fr 0.5rem 1fr;
+    grid-template:
+      'a b c' 1fr
+      'd e f' 1fr /
+      1fr 1fr 1fr;
+    grid-gap: 0.5rem;
 
     padding: 1rem;
   }
@@ -51,7 +80,39 @@
     margin: 0;
   }
 
-  .Navigation__link--container:nth-of-type(-n + 3) {
-    padding-bottom: 0.5rem;
+  /* Sub-grid items */
+  .Navigation__link--container:nth-of-type(1) {
+    grid-area: a;
+    -ms-grid-column-align: center;
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+
+  .Navigation__link--container:nth-of-type(2) {
+    grid-area: b;
+    -ms-grid-column-align: center;
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+
+  .Navigation__link--container:nth-of-type(3) {
+    grid-area: c;
+    -ms-grid-column-align: center;
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+
+  .Navigation__link--container:nth-of-type(4) {
+    grid-area: d;
+    -ms-grid-column-align: center;
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+  }
+
+  .Navigation__link--container:nth-of-type(5) {
+    grid-area: e;
+    -ms-grid-column-align: center;
+    -ms-grid-row: 3;
+    -ms-grid-column: 3;
   }
 }

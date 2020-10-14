@@ -1,9 +1,9 @@
 :root {
-  --button-background-color: var(--app-color);
+  --button-background-color: #56d5fa;
   --button-text-color: #ffffff;
   --overlay-background-color: rgba(0, 0, 0, 0.5);
   --modal-background-color: #ffffff;
-  --modal-header-color: var(--app-color);
+  --modal-header-color: #56d5fa;
 }
 
 .Modal {
@@ -21,8 +21,8 @@
   border-radius: 0.5rem;
   cursor: pointer;
 
-  background: var(--app-color);
-  color: var(--button-font-color);
+  background: var(--button-background-color);
+  color: var(--button-text-color);
   font-size: 1.25rem;
   font-weight: bold;
 }
@@ -81,8 +81,8 @@
   border-radius: 0.5rem;
   cursor: pointer;
 
-  background: var(--app-color);
-  color: var(--button-font-color);
+  background: var(--button-background-color);
+  color: var(--button-text-color);
 }
 
 @keyframes fadein {

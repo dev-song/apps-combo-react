@@ -1,6 +1,7 @@
 :root {
   --delete-button-width: 1.5rem;
-  --button-font-color: #ffffff;
+  --button-background-color: #56d5fa;
+  --button-text-color: #ffffff;
   --todo-item-height: 1.5rem;
   --todo-input-height: 2rem;
   --button-outline-style: 1px auto #000000;
@@ -16,7 +17,7 @@
 .Todo__item-list {
   margin: 0 0 1.5rem;
   padding: 0.5rem 0.5rem 0.5rem 2rem;
-  border: 1px solid var(--app-color);
+  border: 1px solid var(--button-background-color);
   border-radius: 0.25rem;
 }
 
@@ -46,8 +47,8 @@
   border-radius: 0.25rem;
   cursor: pointer;
 
-  background: var(--app-color);
-  color: var(--button-font-color);
+  background: var(--button-background-color);
+  color: var(--button-text-color);
   font-size: 1.25rem;
   font-weight: bold;
 }
@@ -75,8 +76,8 @@
   border-radius: 0.25rem;
   cursor: pointer;
 
-  background: var(--app-color);
-  color: var(--button-font-color);
+  background: var(--button-background-color);
+  color: var(--button-text-color);
   font-size: 1.5rem;
 }
 

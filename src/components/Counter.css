@@ -1,5 +1,5 @@
 :root {
-  --button-background-color: var(--app-color);
+  --button-background-color: #56d5fa;
   --button-text-color: #ffffff;
   --button-width: 3rem;
 }
@@ -26,8 +26,8 @@
   border-radius: 0.5rem;
   cursor: pointer;
 
-  background: var(--app-color);
-  color: var(--button-font-color);
+  background: var(--button-background-color);
+  color: var(--button-text-color);
   font-size: 1.5rem;
   font-weight: bold;
 }

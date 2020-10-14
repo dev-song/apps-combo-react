@@ -1,12 +1,20 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version,not ie <= 9
+*/
+
 :root {
-  --button-background-color: var(--app-color);
+  --button-background-color: #56d5fa;
   --button-text-color: #ffffff;
-  --weather-data-text-color: var(--app-color);
+  --weather-data-text-color: #56d5fa;
   --emphasize-background-color: #29384b;
-  --emphasize-text-color: var(--app-color);
+  --emphasize-text-color: #56d5fa;
 }
 
 .Async {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
   margin: auto;
@@ -14,8 +22,14 @@
 }
 
 .Async__cities--container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 
   margin-bottom: 4rem;
@@ -28,8 +42,8 @@
   border-radius: 0.5rem;
   cursor: pointer;
 
-  background: var(--app-color);
-  color: var(--button-font-color);
+  background: var(--button-background-color);
+  color: var(--button-text-color);
   font-size: 1.25rem;
   font-weight: bold;
 }
@@ -71,20 +85,59 @@
 
 @media (max-width: 768px) {
   .Async__cities--container {
+    display: -ms-grid;
     display: grid;
     justify-items: center;
-    grid-template-columns: repeat(2, 1fr);
+    -ms-grid-rows: 1fr 1rem 1fr;
+    -ms-grid-columns: 1fr 1rem 1fr;
+    grid-template:
+      'a b' 1fr
+      'c d' 1fr /
+      1fr 1fr;
+    grid-gap: 1rem;
 
     margin-bottom: 1rem;
   }
 
   .cities__select-button {
-    width: 80%;
+    width: 90%;
     padding: 0.5rem;
   }
 
-  .cities__select-button:nth-of-type(-n + 2) {
-    margin-bottom: 1rem;
+  .weather-data__city-img {
+    max-width: 95%;
+
+    -o-object-fit: contain;
+    object-fit: contain;
+  }
+
+  .Async__loading-message {
+    font-size: 3rem;
+  }
+
+  /* Sub-grid items */
+  .cities__select-button:nth-of-type(1) {
+    grid-area: a;
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+
+  .cities__select-button:nth-of-type(2) {
+    grid-area: b;
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+
+  .cities__select-button:nth-of-type(3) {
+    grid-area: c;
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+  }
+
+  .cities__select-button:nth-of-type(4) {
+    grid-area: d;
+    -ms-grid-row: 3;
+    -ms-grid-column: 3;
   }
 }
 
@@ -99,9 +152,7 @@
     margin-top: 1rem;
   }
 
-  .weather-data__city-img {
-    max-width: 95%;
-
-    object-fit: contain;
+  .Async__loading-message {
+    font-size: 2rem;
   }
 }
