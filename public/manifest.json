@@ -1,6 +1,8 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "name": "React Apps Combo",
+  "short_name": "Apps Combo",
+  "description": "A collection of simple React apps",
+  "display": "standalone",
   "icons": [
     {
       "src": "favicon.ico",
@@ -19,7 +21,6 @@
     }
   ],
   "start_url": ".",
-  "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
