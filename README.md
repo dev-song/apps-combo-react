@@ -1,6 +1,6 @@
 # Web Apps Combo w/ React
 
-[_English Readme_]()
+[_English Readme_](https://github.com/dev-song/apps-combo-react/blob/main/README-en.md)
 
 React 기반 간단한 웹 앱들을 모아놓은 프로젝트입니다.
 [Create React App](https://github.com/facebook/create-react-app)을 사용하여 만들어졌습니다.
