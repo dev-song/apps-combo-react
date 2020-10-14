@@ -1,68 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Web Apps Combo w/ React
 
-## Available Scripts
+[_English Readme_]()
 
-In the project directory, you can run:
+React 기반 간단한 웹 앱들을 모아놓은 프로젝트입니다.
+[Create React App](https://github.com/facebook/create-react-app)을 사용하여 만들어졌습니다.
 
-### `yarn start`
+[`프로젝트 링크`](https://dev-song.github.io/apps-combo-react)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 목차
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- [프로젝트 소개](#프로젝트-소개)
+- [설치/실행 방법](#설치/실행-방법)
+- [사용 기술](#사용-기술)
 
-### `yarn test`
+## 프로젝트 소개
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+프로젝트에 포함된 앱들은 다음과 같습니다.
 
-### `yarn build`
+- 할 일 목록
+- 내용 정렬 및 검색 가능한 자료 테이블
+- 모달 창
+- 숫자 카운터
+- 도시 사진 뷰어
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 설치/실행 방법
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+이 프로젝트를 실행하기 위해선 먼저 npm 또는 yarn을 사용해 로컬에 설치해야 합니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+git clone https://github.com/dev-song/apps-combo-react.git
+cd apps-combo-react
+yarn install      // or npm install
+```
 
-### `yarn eject`
+그 다음, 아래의 명령을 입력하면 프로젝트가 실행됩니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+yarn start        // or npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 사용 기술
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**프로젝트에 사용된 기술들의 목록은 다음과 같습니다.**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- HTML/CSS
+- JavaScript
+- React.js
+- Redux
