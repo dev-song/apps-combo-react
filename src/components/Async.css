@@ -68,3 +68,40 @@
   font-weight: bold;
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .Async__cities--container {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
+
+    margin-bottom: 1rem;
+  }
+
+  .cities__select-button {
+    width: 80%;
+    padding: 0.5rem;
+  }
+
+  .cities__select-button:nth-of-type(-n + 2) {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .Async__weather-data > p {
+    margin: 0.5rem 0;
+  }
+
+  .weather-data__city-img--container {
+    height: 16rem;
+    margin: auto;
+    margin-top: 1rem;
+  }
+
+  .weather-data__city-img {
+    max-width: 95%;
+
+    object-fit: contain;
+  }
+}

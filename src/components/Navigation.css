@@ -2,6 +2,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
 
   margin: 0;
   padding: 0;
@@ -31,4 +32,26 @@
 
 .Navigation__link:hover {
   color: var(--app-color);
+}
+
+@media (max-width: 768px) {
+  .Navigation__container {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(3, 1fr);
+
+    padding: 1rem;
+  }
+
+  .Navigation__link--container {
+    padding: 0;
+  }
+
+  .Navigation__link--container:first-of-type {
+    margin: 0;
+  }
+
+  .Navigation__link--container:nth-of-type(-n + 3) {
+    padding-bottom: 0.5rem;
+  }
 }
