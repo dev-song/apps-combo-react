@@ -6,9 +6,7 @@ Various web apps made with React.js, especially with [Create React App](https://
 
 - [Introduction](#introduction)
 - [Installation](#installation)
-- [Schreenshots](#screenshots)
 - [Technologies](#technologies)
-- [License](#license)
 
 ## Introduction
 
