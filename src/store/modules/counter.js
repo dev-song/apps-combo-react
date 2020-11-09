@@ -30,7 +30,6 @@ export default function counter(state = initialState, action) {
         lastCalc: 'increment',
         isMax: state.number >= MAX - 1 ? true : false,
         isMin: false,
-        // lastCalcTime: new Date().getTime(),
         lastPlusTime: new Date().getTime()
       };
     case DECREMENT:
@@ -40,7 +39,6 @@ export default function counter(state = initialState, action) {
         lastCalc: 'decrement',
         isMax: false,
         isMin: state.number <= MIN + 1 ? true : false,
-        // lastCalcTime: new Date().getTime(),
         lastMinusTime: new Date().getTime()
       };
     default:
