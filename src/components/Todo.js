@@ -6,7 +6,7 @@ class Todo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todo: []
+      todo: [],
     };
   }
 
@@ -16,10 +16,7 @@ class Todo extends React.Component {
     if (!this.validate(input.value)) return;
 
     this.setState({
-      todo: [
-        ...this.state.todo,
-        new TodoItem(input.value)
-      ]
+      todo: [...this.state.todo, new TodoItem(input.value)],
     });
 
     input.value = '';
@@ -32,7 +29,7 @@ class Todo extends React.Component {
 
   deleteTodo(regTime) {
     this.setState({
-      todo: this.state.todo.filter(item => item.regTime !== +regTime)
+      todo: this.state.todo.filter((item) => item.regTime !== +regTime),
     });
   }
 
@@ -41,41 +38,38 @@ class Todo extends React.Component {
 
     return (
       <div className='Todo'>
-        {todo.length < 1
-          ? null
-          :
+        {todo.length < 1 ? null : (
           <ul className='Todo__item-list'>
             {todo.map(({ regTime, text }) => (
               <li key={regTime} className='Todo-item'>
                 {text}
                 <button
                   className='Todo-item__delete-button'
-                  onClick={() => { this.deleteTodo(regTime) }}
+                  onClick={() => {
+                    this.deleteTodo(regTime);
+                  }}
                 >
                   -
-              </button>
+                </button>
               </li>
             ))}
           </ul>
-        }
+        )}
 
-        {todo.length < 5
-          ?
-          <form
-            className='Todo__input-container'
-            onSubmit={e => this.addTodo(e)}
-          >
+        {todo.length < 5 ? (
+          <form className='Todo__input-container' onSubmit={(e) => this.addTodo(e)}>
             <input
               type='text'
               className='Todo__input'
               minLength='1'
               maxLength='32'
-              placeholder='What needs to be done?' />
+              placeholder='What needs to be done?'
+            />
             <button className='Todo__input--add-button'>+</button>
           </form>
-          :
+        ) : (
           <p className='Todo__list-full-message'>The list is full.</p>
-        }
+        )}
       </div>
     );
   }

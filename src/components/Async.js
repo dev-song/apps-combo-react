@@ -2,12 +2,7 @@ import React from 'react';
 
 import './Async.css';
 
-const CITIES = [
-  'Seoul',
-  'Tokyo',
-  'Beijing',
-  'Toronto'
-];
+const CITIES = ['Seoul', 'Tokyo', 'Beijing', 'Toronto'];
 
 class Async extends React.Component {
   constructor(props) {
@@ -15,8 +10,8 @@ class Async extends React.Component {
     this.state = {
       isLoading: true,
       selectedCity: null,
-      weather: null
-    }
+      weather: null,
+    };
   }
 
   async getWeather(city) {
@@ -29,7 +24,7 @@ class Async extends React.Component {
       this.setState({
         isLoading: false,
         selectedCity: city,
-        weatherData
+        weatherData,
       });
     } catch (err) {
       console.error(err);
@@ -41,15 +36,11 @@ class Async extends React.Component {
   }
 
   render() {
-    const {
-      isLoading,
-      selectedCity,
-      weatherData
-    } = this.state;
+    const { isLoading, selectedCity, weatherData } = this.state;
 
     return (
-      <div className="Async">
-        <div className="Async__cities--container">
+      <div className='Async'>
+        <div className='Async__cities--container'>
           {CITIES.map((city, index) => (
             <button
               key={index}
@@ -60,32 +51,31 @@ class Async extends React.Component {
             </button>
           ))}
         </div>
-        {!isLoading
-          ?
-          <div className="Async__weather-data">
-            <p className="weather-data__city--label">
+        {!isLoading ? (
+          <div className='Async__weather-data'>
+            <p className='weather-data__city--label'>
               City:
-              <span className="weather-data__city">{weatherData.city}</span>
+              <span className='weather-data__city'>{weatherData.city}</span>
             </p>
-            <p className="weather-data__weather--label">
+            <p className='weather-data__weather--label'>
               Weather:
-              <span className="weather-data__weather">{weatherData.current.weather}</span>
+              <span className='weather-data__weather'>{weatherData.current.weather}</span>
             </p>
-            <p className="weather-data__date--label">
+            <p className='weather-data__date--label'>
               Date:
-              <span className="weather-data__date">{weatherData.current.date.split('T')[0]}</span>
+              <span className='weather-data__date'>{weatherData.current.date.split('T')[0]}</span>
             </p>
-            <figure className="weather-data__city-img--container">
+            <figure className='weather-data__city-img--container'>
               <img
                 src={weatherData.image_url}
-                className="weather-data__city-img"
+                className='weather-data__city-img'
                 alt={`The city of ${weatherData.city}`}
               />
             </figure>
           </div>
-          :
-          <p className="Async__loading-message">Loading...</p>
-        }
+        ) : (
+          <p className='Async__loading-message'>Loading...</p>
+        )}
       </div>
     );
   }

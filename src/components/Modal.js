@@ -7,7 +7,7 @@ class Modal extends React.Component {
     super(props);
     this.state = {
       openModal: false,
-      isClosing: false
+      isClosing: false,
     };
 
     this.handleOnOff = this.handleOnOff.bind(this);
@@ -23,7 +23,7 @@ class Modal extends React.Component {
     setTimeout(() => {
       this.setState({
         openModal: !this.state.openModal,
-        isClosing: false
+        isClosing: false,
       });
     }, delay);
   }
@@ -32,31 +32,22 @@ class Modal extends React.Component {
     const { openModal, isClosing } = this.state;
 
     return (
-      <div className="Modal">
-        <button
-          className='Modal__open-button'
-          onClick={this.handleOnOff}
-        >
+      <div className='Modal'>
+        <button className='Modal__open-button' onClick={this.handleOnOff}>
           Show Modal
         </button>
 
-        {openModal
-          ?
+        {openModal ? (
           <div className={`Modal__overlay${isClosing ? ' closing' : ''}`}>
             <div className={`Modal__container${isClosing ? ' closing' : ''}`}>
-              <h2 className="Modal__header">Modal Header</h2>
-              <p className="Modal__body">Modal Body</p>
-              <button
-                className="Modal__close-button"
-                onClick={this.handleOnOff}
-              >
+              <h2 className='Modal__header'>Modal Header</h2>
+              <p className='Modal__body'>Modal Body</p>
+              <button className='Modal__close-button' onClick={this.handleOnOff}>
                 OK
-            </button>
+              </button>
             </div>
           </div>
-          :
-          null
-        }
+        ) : null}
       </div>
     );
   }

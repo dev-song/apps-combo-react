@@ -2,11 +2,7 @@ import React from 'react';
 
 import './Grid.css';
 
-const CATEGORIES = [
-  'name',
-  'age',
-  'weight'
-];
+const CATEGORIES = ['name', 'age', 'weight'];
 const ASCENDING = 'asc';
 const DESCENDING = 'desc';
 
@@ -15,16 +11,14 @@ class Grid extends React.Component {
     super(props);
 
     this.state = {
-      categories: CATEGORIES.map(category => (
-        new TableCategory(category)
-      )),
+      categories: CATEGORIES.map((category) => new TableCategory(category)),
       data: [
         new TableItem('jack', 20, 70),
         new TableItem('lee', 30, 88),
         new TableItem('chuck', 17, 75),
         new TableItem('ralph', 41, 69),
-        new TableItem('mark', 25, 80)
-      ]
+        new TableItem('mark', 25, 80),
+      ],
     };
   }
 
@@ -42,7 +36,7 @@ class Grid extends React.Component {
               return sortOrder === DESCENDING ? -1 : 1;
             }
             return 0;
-          })
+          }),
         });
       }
     });
@@ -50,40 +44,38 @@ class Grid extends React.Component {
 
   filterData(keyword) {
     this.setState({
-      data: [...this.state.data].map(item => {
+      data: [...this.state.data].map((item) => {
         for (const property in item) {
           if (`${item[property]}`.includes(keyword)) {
             return {
               ...item,
-              visible: true
+              visible: true,
             };
           }
         }
         return {
           ...item,
-          visible: false
+          visible: false,
         };
-      })
+      }),
     });
   }
 
   handleSort(category) {
     this.setState({
-      categories: this.state.categories.map(item => {
+      categories: this.state.categories.map((item) => {
         if (item.category === category) {
           return {
             category,
-            sortOrder: item.sortOrder === DESCENDING
-              ? ASCENDING
-              : DESCENDING,
-            selected: true
+            sortOrder: item.sortOrder === DESCENDING ? ASCENDING : DESCENDING,
+            selected: true,
           };
         }
         return {
           ...item,
-          selected: false
+          selected: false,
         };
-      })
+      }),
     });
 
     setTimeout(() => {
@@ -95,21 +87,20 @@ class Grid extends React.Component {
     const { categories, data } = this.state;
 
     return (
-      <div className='Grid' >
+      <div className='Grid'>
         <input
           className='Grid__keyword-input'
           type='text'
           placeholder='Please enter keywords'
-          onKeyUp={e => { this.filterData(e.target.value) }}
+          onKeyUp={(e) => {
+            this.filterData(e.target.value);
+          }}
         />
         <table className='Grid__data-table'>
           <thead className='data-table__table-head'>
             <tr className='table-head__row'>
               {categories.map(({ category, sortOrder, selected }, index) => (
-                <th
-                  key={index}
-                  className={`table-head__column${selected ? ' selected' : ''}`}
-                >
+                <th key={index} className={`table-head__column${selected ? ' selected' : ''}`}>
                   {category}
                   <span
                     role='img'
@@ -117,10 +108,7 @@ class Grid extends React.Component {
                     aria-label='Expand'
                     onClick={() => this.handleSort(category)}
                   >
-                    {sortOrder === DESCENDING
-                      ? '▼'
-                      : '▲'
-                    }
+                    {sortOrder === DESCENDING ? '▼' : '▲'}
                   </span>
                 </th>
               ))}
@@ -128,19 +116,9 @@ class Grid extends React.Component {
           </thead>
           <tbody className='data-table__table-body'>
             {data.map((item, index) => (
-              <tr
-                key={index}
-                className={
-                  `table-body__row${item.visible ? '' : ' hidden'}`
-                }
-              >
+              <tr key={index} className={`table-body__row${item.visible ? '' : ' hidden'}`}>
                 {categories.map(({ category, selected }, index) => (
-                  <td
-                    key={index}
-                    className={
-                      `table-body__column ${category}-column${selected ? ' selected' : ''}`
-                    }
-                  >
+                  <td key={index} className={`table-body__column ${category}-column${selected ? ' selected' : ''}`}>
                     {item[category]}
                   </td>
                 ))}
@@ -167,7 +145,7 @@ class TableItem {
       const category = CATEGORIES[index];
       this[category] = arg;
       this.visible = true;
-    })
+    });
   }
 }
 
